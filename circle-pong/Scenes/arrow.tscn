@@ -1,0 +1,54 @@
+[gd_scene load_steps=5 format=3 uid="uid://ng83yb2syppg"]
+
+[ext_resource type="Texture2D" uid="uid://dict5klyn0eti" path="res://Assets/Group 3.png" id="1_2u0bd"]
+
+[sub_resource type="Animation" id="Animation_h5x2m"]
+resource_name = "Pulse"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.866667),
+"transitions": PackedFloat32Array(1, 1, 2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(-20, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2u0bd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40cdi"]
+_data = {
+&"Pulse": SubResource("Animation_h5x2m"),
+&"RESET": SubResource("Animation_2u0bd")
+}
+
+[node name="Arrow" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.278431)
+self_modulate = Color(0.447059, 1, 1, 1)
+scale = Vector2(0.410256, 0.410256)
+texture = ExtResource("1_2u0bd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+&"": SubResource("AnimationLibrary_40cdi")
+}
+autoplay = "Pulse"

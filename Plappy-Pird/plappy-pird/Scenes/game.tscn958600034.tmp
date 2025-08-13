@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://m0fwrik5t3mm"]
+
+[ext_resource type="PackedScene" uid="uid://dhssgmol7lom1" path="res://Scenes/Pird.tscn" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://caodkga1587or" path="res://Scripts/game_manager.gd" id="1_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://y2576owydtyn" path="res://Scenes/Pipe.tscn" id="3_wrm1d"]
+[ext_resource type="Script" uid="uid://cbxew78mbvuuu" path="res://Scripts/pipe_spawner.gd" id="4_3dryh"]
+[ext_resource type="Script" uid="uid://cxgnu4qhpu4p6" path="res://Scripts/point_text.gd" id="5_wowpa"]
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_qxrlw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Pird" parent="." instance=ExtResource("1_ebmjs")]
+z_index = 5
+
+[node name="PipeSpawner" type="Node2D" parent="."]
+position = Vector2(848, 0)
+script = ExtResource("4_3dryh")
+spawnTime = null
+speed = null
+
+[node name="Timer" type="Timer" parent="PipeSpawner"]
+
+[node name="Pipe" parent="PipeSpawner" instance=ExtResource("3_wrm1d")]
+position = Vector2(-230, -287)
+
+[node name="pointText" type="Label" parent="."]
+offset_left = -490.0
+offset_top = -290.0
+offset_right = -430.0
+offset_bottom = -267.0
+text = "nothing"
+script = ExtResource("5_wowpa")
+
+[connection signal="timeout" from="PipeSpawner/Timer" to="PipeSpawner" method="_on_timer_timeout"]

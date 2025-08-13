@@ -1,0 +1,142 @@
+[gd_scene load_steps=15 format=3 uid="uid://bibg2wd6odulf"]
+
+[ext_resource type="Texture2D" uid="uid://dcfyw345gkto" path="res://assets/sprites/BAckground.jpg" id="1_gee14"]
+[ext_resource type="PackedScene" uid="uid://36afjn1l144v" path="res://scenes/player.tscn" id="1_jjwct"]
+[ext_resource type="Script" uid="uid://c02b4co3t48hr" path="res://scripts/game.gd" id="1_vbhoj"]
+[ext_resource type="Script" uid="uid://c0loioo8ey1eu" path="res://scripts/camera_2d.gd" id="3_gee14"]
+[ext_resource type="PackedScene" uid="uid://bef7s4qb7fd7c" path="res://scenes/Wall.tscn" id="3_mdgvl"]
+[ext_resource type="PackedScene" uid="uid://bpm3it1du81p5" path="res://scenes/deathzone.tscn" id="4_ltd74"]
+[ext_resource type="FontFile" uid="uid://d068342smprd6" path="res://assets/fonts/Roboto-Thin.ttf" id="8_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://cl5wqcrbsw8c4" path="res://assets/sprites/Ellipse 2.png" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://fo2xuhekpwxw" path="res://scenes/gravyball.tscn" id="9_vtaks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x1tmj"]
+size = Vector2(1155, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gwy6h"]
+size = Vector2(706, 30)
+
+[sub_resource type="Curve" id="Curve_kvpfn"]
+_data = [Vector2(0, 0.955056), 0.0, 0.0, 0, 0, Vector2(1, 0.415973), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eew57"]
+curve = SubResource("Curve_kvpfn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_dinhu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 380, 1)
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = -2.23517e-06
+scale_curve = SubResource("CurveTexture_eew57")
+color = Color(0.929715, 0.929715, 0.929715, 1)
+hue_variation_min = -2.23517e-08
+hue_variation_max = -2.23517e-08
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -2
+scale = Vector2(0.508571, 0.508571)
+texture = ExtResource("1_gee14")
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_vbhoj")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_gee14")
+
+[node name="Player_1" parent="." instance=ExtResource("1_jjwct")]
+position = Vector2(-500, 5)
+
+[node name="Player_2" parent="." instance=ExtResource("1_jjwct")]
+position = Vector2(500, 7)
+player_index = 1
+
+[node name="Wall_top" parent="." instance=ExtResource("3_mdgvl")]
+position = Vector2(-569, -335)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_top"]
+position = Vector2(568, 2)
+shape = SubResource("RectangleShape2D_x1tmj")
+
+[node name="Wall_bottom" parent="." instance=ExtResource("3_mdgvl")]
+position = Vector2(-568, -333)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_bottom"]
+position = Vector2(567, 662)
+shape = SubResource("RectangleShape2D_x1tmj")
+
+[node name="deathzone" parent="." instance=ExtResource("4_ltd74")]
+position = Vector2(-597, 2)
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deathzone"]
+position = Vector2(0, -2)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_gwy6h")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="deathzone"]
+position = Vector2(21, 0)
+amount = 500
+texture = ExtResource("9_0tnpc")
+lifetime = 2.0
+preprocess = 2.0
+process_material = SubResource("ParticleProcessMaterial_dinhu")
+
+[node name="deathzone2" parent="." instance=ExtResource("4_ltd74")]
+position = Vector2(598, 0)
+collision_mask = 2
+player_side = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="deathzone2"]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("RectangleShape2D_gwy6h")
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="deathzone2"]
+position = Vector2(-19, 6)
+amount = 500
+texture = ExtResource("9_0tnpc")
+lifetime = 2.0
+preprocess = 2.0
+process_material = SubResource("ParticleProcessMaterial_dinhu")
+
+[node name="UI" type="Node" parent="."]
+
+[node name="playerScore1" type="Label" parent="UI"]
+offset_left = -576.0
+offset_top = -323.0
+offset_bottom = 322.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(1, 1, 1, 0.329412)
+theme_override_fonts/font = ExtResource("8_0tnpc")
+theme_override_font_sizes/font_size = 150
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="playerScore2" type="Label" parent="UI"]
+offset_left = 3.0
+offset_top = -322.0
+offset_right = 579.0
+offset_bottom = 323.0
+theme_type_variation = &"HeaderMedium"
+theme_override_colors/font_color = Color(1, 1, 1, 0.329412)
+theme_override_fonts/font = ExtResource("8_0tnpc")
+theme_override_font_sizes/font_size = 150
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+
+[node name="gravyball" parent="." instance=ExtResource("9_vtaks")]

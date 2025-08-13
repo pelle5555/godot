@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsllnfuov5vyb"]
+
+[ext_resource type="Script" uid="uid://xf85bemqmuxt" path="res://scripts/menu.gd" id="1_yqeox"]
+[ext_resource type="FontFile" uid="uid://d068342smprd6" path="res://assets/fonts/Roboto-Thin.ttf" id="2_vjb58"]
+[ext_resource type="Texture2D" uid="uid://dcfyw345gkto" path="res://assets/sprites/BAckground.jpg" id="3_con2f"]
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+script = ExtResource("1_yqeox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(577.5, 326)
+scale = Vector2(0.48125, 0.465714)
+texture = ExtResource("3_con2f")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="BoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_hover_color = Color(0.654232, 0.654232, 0.654232, 1)
+theme_override_fonts/font = ExtResource("2_vjb58")
+theme_override_font_sizes/font_size = 140
+text = "Play
+"
+flat = true
+
+[connection signal="pressed" from="BoxContainer/Play" to="." method="_on_play_pressed"]

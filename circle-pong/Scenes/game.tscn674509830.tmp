@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://dvrsxwsy461p7"]
+
+[ext_resource type="Script" uid="uid://bc1e26lkxrg3d" path="res://Scripts/game_manager.gd" id="1_3dryh"]
+[ext_resource type="PackedScene" uid="uid://cnqpobj4cvt3f" path="res://Scenes/player.tscn" id="1_ebmjs"]
+[ext_resource type="PackedScene" uid="uid://c4emk3mej23g" path="res://Scenes/ball.tscn" id="2_qxrlw"]
+[ext_resource type="Script" uid="uid://nnj3n8le3oy2" path="res://Scripts/button.gd" id="3_wrm1d"]
+[ext_resource type="Texture2D" uid="uid://bbcjjn8wjjcer" path="res://Assets/BAckground.jpg" id="5_wowpa"]
+[ext_resource type="PackedScene" uid="uid://oy2c4w718img" path="res://Scenes/death_zone.tscn" id="6_i6g32"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i6g32"]
+size = Vector2(20, 608)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1l0tm"]
+size = Vector2(20, 608)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v158k"]
+size = Vector2(20, 1168)
+
+[node name="Game" type="Node2D"]
+script = ExtResource("1_3dryh")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(-1.90735e-06, 1.90735e-06)
+scale = Vector2(0.512, 0.548571)
+texture = ExtResource("5_wowpa")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="player" parent="." instance=ExtResource("1_ebmjs")]
+z_index = 5
+position = Vector2(-264, 1)
+other_player = NodePath("../player2")
+player_index = null
+
+[node name="Ball" parent="." instance=ExtResource("2_qxrlw")]
+position = Vector2(0, 1)
+
+[node name="player2" parent="." instance=ExtResource("1_ebmjs")]
+z_index = 5
+position = Vector2(264, 0)
+other_player = NodePath("../player")
+player_index = 1
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="up_button" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 496.0
+offset_top = -296.0
+offset_right = 526.0
+offset_bottom = -265.0
+text = "Up"
+script = ExtResource("3_wrm1d")
+button_type = "up"
+
+[node name="down_button" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 496.0
+offset_top = -256.0
+offset_right = 549.0
+offset_bottom = -225.0
+text = "Down"
+script = ExtResource("3_wrm1d")
+button_type = "down"
+
+[node name="right_button" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 496.0
+offset_top = -216.0
+offset_right = 545.0
+offset_bottom = -185.0
+text = "Right"
+script = ExtResource("3_wrm1d")
+button_type = "right"
+
+[node name="left_button" type="Button" parent="Control"]
+layout_mode = 2
+offset_left = 496.0
+offset_top = -176.0
+offset_right = 534.0
+offset_bottom = -145.0
+text = "Left"
+script = ExtResource("3_wrm1d")
+button_type = "left"
+
+[node name="Gravity_timer" type="Timer" parent="."]
+
+[node name="Borders" type="Node" parent="."]
+
+[node name="Death_zone_left" parent="Borders" instance=ExtResource("6_i6g32")]
+position = Vector2(-576, 0)
+collision_layer = 4
+collision_mask = 4
+metadata/direction = "left"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Death_zone_left"]
+shape = SubResource("RectangleShape2D_i6g32")
+
+[node name="Death_zone_right" parent="Borders" instance=ExtResource("6_i6g32")]
+position = Vector2(576, 0)
+collision_layer = 4
+collision_mask = 4
+metadata/direction = "right"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Death_zone_right"]
+shape = SubResource("RectangleShape2D_1l0tm")
+
+[node name="Death_zone_top" parent="Borders" instance=ExtResource("6_i6g32")]
+position = Vector2(0, -320)
+rotation = 1.57079
+collision_layer = 4
+collision_mask = 4
+metadata/direction = "up"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Death_zone_top"]
+shape = SubResource("RectangleShape2D_v158k")
+
+[node name="Death_zone_bottom" parent="Borders" instance=ExtResource("6_i6g32")]
+position = Vector2(0, 320)
+rotation = 1.57079
+collision_layer = 4
+collision_mask = 4
+metadata/direction = "down"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Borders/Death_zone_bottom"]
+shape = SubResource("RectangleShape2D_v158k")
+
+[connection signal="pressed" from="Control/up_button" to="Control/up_button" method="_on_pressed"]
+[connection signal="pressed" from="Control/down_button" to="Control/down_button" method="_on_pressed"]
+[connection signal="pressed" from="Control/right_button" to="Control/right_button" method="_on_pressed"]
+[connection signal="pressed" from="Control/left_button" to="Control/left_button" method="_on_pressed"]
+[connection signal="timeout" from="Gravity_timer" to="." method="_on_timer_timeout"]

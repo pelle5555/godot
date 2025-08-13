@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://fo2xuhekpwxw"]
+
+[ext_resource type="Texture2D" uid="uid://c4rq3ksi8q3ef" path="res://assets/sprites/Ellipse 1.png" id="1_8kh0u"]
+[ext_resource type="Script" uid="uid://dnmygajsd564s" path="res://scripts/gravyball.gd" id="1_h6sj5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h6sj5"]
+
+[node name="gravyball" type="RigidBody2D"]
+script = ExtResource("1_h6sj5")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.454545, 0.454545)
+texture = ExtResource("1_8kh0u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h6sj5")

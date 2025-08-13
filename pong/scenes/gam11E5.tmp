@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bibg2wd6odulf"]
+
+[ext_resource type="PackedScene" uid="uid://cqn1itp5aypww" path="res://scenes/player.tscn" id="1_etvvb"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_etvvb")]
+position = Vector2(-355, 5)
+rotation = 0.0
+scale = Vector2(1, 1)

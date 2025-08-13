@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://8nacwisr3x2y"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_jjgbg"]
+sky_material = SubResource("ProceduralSkyMaterial_7u77a")
+
+[sub_resource type="Environment" id="Environment_bo1nx"]
+background_mode = 2
+background_color = Color(0.0901961, 0, 0, 1)
+sky = SubResource("Sky_jjgbg")
+ambient_light_sky_contribution = 0.21
+tonemap_mode = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7u77a"]
+metallic = 1.0
+roughness = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_jjgbg"]
+
+[node name="Main" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_bo1nx")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.964966, 0.262374, 0, -0.262374, 0.964966, 0, 6.42878, 0)
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31462, 5.69683, 1.08988)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64302, 4.32273, 0.00584078)
+material_override = SubResource("StandardMaterial3D_7u77a")
+mesh = SubResource("SphereMesh_jjgbg")

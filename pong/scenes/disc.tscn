@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dumgdmna8h4jy"]
+
+[ext_resource type="Script" uid="uid://du8x7wiipgnch" path="res://scripts/disc.gd" id="1_sq8rk"]
+[ext_resource type="Texture2D" uid="uid://c4rq3ksi8q3ef" path="res://assets/sprites/Ellipse 1.png" id="2_kx35p"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e7uci"]
+radius = 24.0208
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_sq8rk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_kx35p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e7uci")

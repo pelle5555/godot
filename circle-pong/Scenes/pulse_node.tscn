@@ -1,0 +1,75 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx76cesxy527a"]
+
+[ext_resource type="PackedScene" uid="uid://7xcs3icnxp3u" path="res://Scenes/gavity_pulse.tscn" id="1_7m1wc"]
+[ext_resource type="PackedScene" uid="uid://ng83yb2syppg" path="res://Scenes/arrow.tscn" id="2_7cjio"]
+
+[node name="Pulse_node" type="Node2D"]
+
+[node name="Gavity_pulse" parent="." instance=ExtResource("1_7m1wc")]
+offset_left = -114.0
+offset_top = -648.0
+offset_right = 120.0
+offset_bottom = 658.0
+
+[node name="Arrow" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 0)
+
+[node name="Arrow2" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 64)
+
+[node name="Arrow3" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -128)
+
+[node name="Arrow4" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -64)
+
+[node name="Arrow5" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 256)
+
+[node name="Arrow6" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 320)
+
+[node name="Arrow7" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 128)
+
+[node name="Arrow8" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 192)
+
+[node name="Arrow9" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 512)
+
+[node name="Arrow10" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 576)
+
+[node name="Arrow17" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 640)
+
+[node name="Arrow11" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 384)
+
+[node name="Arrow12" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, 448)
+
+[node name="Arrow13" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -256)
+
+[node name="Arrow14" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -192)
+
+[node name="Arrow15" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -384)
+
+[node name="Arrow16" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -320)
+
+[node name="Arrow18" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -512)
+
+[node name="Arrow19" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -448)
+
+[node name="Arrow20" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -640)
+
+[node name="Arrow21" parent="." instance=ExtResource("2_7cjio")]
+position = Vector2(32, -576)

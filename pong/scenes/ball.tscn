@@ -1,0 +1,28 @@
+[gd_scene load_steps=4 format=3 uid="uid://n77i7anac7t8"]
+
+[ext_resource type="Script" uid="uid://cqbjt2wbkki6t" path="res://scripts/ball.gd" id="1_rfq16"]
+[ext_resource type="Texture2D" uid="uid://c4rq3ksi8q3ef" path="res://assets/sprites/Ellipse 1.png" id="2_cxlvu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_l4cfo"]
+radius = 8.0
+
+[node name="Ball" type="Area2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_rfq16")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.363636, 0.363636)
+texture = ExtResource("2_cxlvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_l4cfo")
+debug_color = Color(0.780392, 0.92549, 0.968627, 0.14902)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
