@@ -9,7 +9,7 @@
 [node name="Node3D" type="Node3D"]
 
 [node name="CubeMesh" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0544696, 0.0925202, 3.40459)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0544696, 1.0978, 3.40459)
 mesh = SubResource("BoxMesh_2poj3")
 
 [node name="SphereMesh" type="MeshInstance3D" parent="."]
@@ -17,5 +17,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0718167, 0.609933, 0.67742
 mesh = SubResource("SphereMesh_ebmjs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.16742)
 mesh = SubResource("CapsuleMesh_2poj3")
