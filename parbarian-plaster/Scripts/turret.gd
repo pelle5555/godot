@@ -1,11 +1,13 @@
 extends Node3D
 
 @export var projectile: PackedScene
+@export var turrent_range: float = 10.0
 
 var enemy_path: Path3D
 var target: PathFollow3D
+
 @onready var turret_barrel: MeshInstance3D = $TurretBase/TurretHead/TurretBarrel
-@export var turrent_range: float = 10.0
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _physics_process(delta: float) -> void:
 	target = find_best_target()
@@ -14,6 +16,7 @@ func _physics_process(delta: float) -> void:
 
 func _on_timer_timeout() -> void:
 	if target:
+		animation_player.play("fire")
 		var shot = projectile.instantiate()
 		add_child(shot)
 		shot.global_position = turret_barrel.global_position
