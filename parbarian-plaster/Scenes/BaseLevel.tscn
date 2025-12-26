@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dv2mst5yuocmi"]
+[gd_scene load_steps=15 format=3 uid="uid://dv2mst5yuocmi"]
 
 [ext_resource type="PackedScene" uid="uid://bj86h10sybpjh" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_1i3bd"]
 [ext_resource type="MeshLibrary" uid="uid://df1lfts4cpdiw" path="res://MeshLibraries/SpaceLibrary.tres" id="1_uiqps"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d2j7e42lqw1il" path="res://Scenes/Base/base.tscn" id="3_bq707"]
 [ext_resource type="Script" uid="uid://j76wa24q2eyl" path="res://Scripts/turret_manager.gd" id="5_oor6l"]
 [ext_resource type="PackedScene" uid="uid://dlp4ipixrwmfi" path="res://Scenes/Towers/turret.tscn" id="6_1hb7a"]
+[ext_resource type="Script" uid="uid://sn7qt236emwb" path="res://Scripts/bank.gd" id="8_0ohif"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2p1g8"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -30,6 +31,11 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 7
+
+[sub_resource type="LabelSettings" id="LabelSettings_yqp1w"]
+font_size = 48
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
 
 [node name="BaseLevel" type="Node3D"]
 
@@ -118,5 +124,25 @@ max_health = 6
 script = ExtResource("5_oor6l")
 turret = ExtResource("6_1hb7a")
 enemy_path = NodePath("../EnemyPath")
+
+[node name="Bank" type="MarginContainer" parent="." groups=["bank"]]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+script = ExtResource("8_0ohif")
+
+[node name="GoldText" type="Label" parent="Bank"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Placerholder"
+label_settings = SubResource("LabelSettings_yqp1w")
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="spawn_enemy"]

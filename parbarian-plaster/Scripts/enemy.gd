@@ -3,6 +3,7 @@ extends PathFollow3D
 @export var enemy_speed: float = 10
 @export var enemy_damage: int = 1
 @export var max_health: int = 50
+@export var enemy_gold: int = 15
 
 var current_health: int:
 	set(health_in):
@@ -10,9 +11,11 @@ var current_health: int:
 			animation_player.play("TakeDamage")
 		current_health = health_in
 		if current_health < 1:
+			bank.gold += enemy_gold
 			queue_free()
 	
 @onready var base = get_tree().get_first_node_in_group("base")
+@onready var bank = get_tree().get_first_node_in_group("bank")
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
