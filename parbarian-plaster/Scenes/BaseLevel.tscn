@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dv2mst5yuocmi"]
+[gd_scene load_steps=17 format=3 uid="uid://dv2mst5yuocmi"]
 
 [ext_resource type="PackedScene" uid="uid://bj86h10sybpjh" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_1i3bd"]
 [ext_resource type="MeshLibrary" uid="uid://df1lfts4cpdiw" path="res://MeshLibraries/SpaceLibrary.tres" id="1_uiqps"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" uid="uid://j76wa24q2eyl" path="res://Scripts/turret_manager.gd" id="5_oor6l"]
 [ext_resource type="PackedScene" uid="uid://dlp4ipixrwmfi" path="res://Scenes/Towers/turret.tscn" id="6_1hb7a"]
 [ext_resource type="Script" uid="uid://sn7qt236emwb" path="res://Scripts/bank.gd" id="8_0ohif"]
+[ext_resource type="PackedScene" uid="uid://cm4l4saf1g71w" path="res://Scenes/difficulty_manager.tscn" id="9_08eeq"]
+[ext_resource type="PackedScene" uid="uid://dsach4m32rwu2" path="res://Scenes/victory_layer.tscn" id="10_o8m62"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2p1g8"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -52,7 +54,7 @@ size = Vector3(100, 2, 100)
 material = SubResource("StandardMaterial3D_uiqps")
 
 [node name="RayPickerCamera" parent="." node_paths=PackedStringArray("gridmap", "turrent_manager") instance=ExtResource("1_1i3bd")]
-transform = Transform3D(1, 0, 0, 0, 0.422618, 0.906308, 0, -0.906308, 0.422618, 0, 14.5, 9.5)
+transform = Transform3D(1, 0, 0, 0, 0.469472, 0.882948, 0, -0.882948, 0.469472, 0, 16, 11)
 gridmap = NodePath("../GridMap")
 turrent_manager = NodePath("../TurretManager")
 
@@ -65,10 +67,12 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="EnemyPath" type="Path3D" parent="."]
+[node name="EnemyPath" type="Path3D" parent="." node_paths=PackedStringArray("difficulty_manager", "victory_layer")]
 curve = SubResource("Curve3D_uiqps")
 script = ExtResource("3_1hb7a")
 enemy_scene = ExtResource("2_10lgy")
+difficulty_manager = NodePath("../DifficultyManager")
+victory_layer = NodePath("../VictoryLayer")
 
 [node name="Road" type="CSGPolygon3D" parent="EnemyPath"]
 polygon = PackedVector2Array(-1, 0, -1, 0.1, 1, 0.1, 1, 0)
@@ -79,7 +83,7 @@ path_interval = 0.5
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
@@ -93,7 +97,7 @@ path_interval = 0.5
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
@@ -107,7 +111,7 @@ path_interval = 0.5
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
-path_local = false
+path_local = true
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
@@ -118,7 +122,7 @@ autostart = true
 
 [node name="Base" parent="." instance=ExtResource("3_bq707")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6.5)
-max_health = 6
+max_health = 50
 
 [node name="TurretManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("5_oor6l")
@@ -137,6 +141,7 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 script = ExtResource("8_0ohif")
+starting_gold = 250
 
 [node name="GoldText" type="Label" parent="Bank"]
 layout_mode = 2
@@ -145,4 +150,10 @@ size_flags_vertical = 0
 text = "Placerholder"
 label_settings = SubResource("LabelSettings_yqp1w")
 
+[node name="DifficultyManager" parent="." instance=ExtResource("9_08eeq")]
+
+[node name="VictoryLayer" parent="." instance=ExtResource("10_o8m62")]
+visible = false
+
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="spawn_enemy"]
+[connection signal="stop_spawning_enemies" from="DifficultyManager" to="EnemyPath" method="_on_difficulty_manager_stop_spawning_enemies"]
