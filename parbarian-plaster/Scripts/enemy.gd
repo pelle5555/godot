@@ -3,7 +3,7 @@ extends PathFollow3D
 @export var enemy_speed: float = 10
 @export var enemy_damage: int = 1
 @export var max_health: int = 50
-@export var enemy_gold: int = 15
+@export var enemy_gold: int = 10
 
 var current_health: int:
 	set(health_in):

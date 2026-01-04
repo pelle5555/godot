@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2j7e42lqw1il"]
+[gd_scene load_steps=4 format=3 uid="uid://d2j7e42lqw1il"]
 
 [ext_resource type="Script" uid="uid://dihre7qmmcdc" path="res://Scripts/base.gd" id="1_3m01j"]
+[ext_resource type="FontFile" uid="uid://xjj0w717pm8f" path="res://Assets/Asap/static/Asap-Bold.ttf" id="2_3k1vj"]
 [ext_resource type="PackedScene" uid="uid://bmkwd76yo7va" path="res://Assets/Base.glb" id="2_sqd20"]
 
 [node name="Base" type="Node3D" groups=["base"]]
@@ -10,6 +11,7 @@ script = ExtResource("1_3m01j")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6, 0)
 billboard = 1
 text = "Health"
+font = ExtResource("2_3k1vj")
 font_size = 500
 outline_size = 100
 

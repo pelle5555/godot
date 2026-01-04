@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var max_health: int = 5
+@export var max_health: int = 20
 var current_health: int:
 	set(health_in):
 		current_health = health_in

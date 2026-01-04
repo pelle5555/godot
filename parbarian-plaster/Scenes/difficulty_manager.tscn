@@ -4,12 +4,12 @@
 
 [sub_resource type="Curve" id="Curve_hmpnt"]
 _limits = [0.25, 2.0, 0.0, 1.0]
-_data = [Vector2(0, 2), 0.0, -1.75, 0, 1, Vector2(1, 0.25), -1.75, 0.0, 1, 0]
+_data = [Vector2(0, 2), 0.0, -0.915838, 0, 0, Vector2(1, 0.261745), -3.5999, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_ypnm1"]
-_limits = [10.0, 150.0, 0.0, 1.0]
-_data = [Vector2(0, 10), 0.0, 140.0, 0, 1, Vector2(1, 150), 140.0, 0.0, 1, 0]
+_limits = [25.0, 180.0, 0.0, 1.0]
+_data = [Vector2(0, 25), 0.0, 83.9339, 0, 0, Vector2(0.976415, 177.082), 300.229, 0.0, 0, 0]
 point_count = 2
 
 [node name="DifficultyManager" type="Node"]
