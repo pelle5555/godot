@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dv2mst5yuocmi"]
+[gd_scene load_steps=21 format=3 uid="uid://dv2mst5yuocmi"]
 
 [ext_resource type="PackedScene" uid="uid://bj86h10sybpjh" path="res://RayPickerCamera/ray_picker_camera.tscn" id="1_1i3bd"]
 [ext_resource type="MeshLibrary" uid="uid://df1lfts4cpdiw" path="res://MeshLibraries/SpaceLibrary.tres" id="1_uiqps"]
@@ -8,8 +8,10 @@
 [ext_resource type="Script" uid="uid://j76wa24q2eyl" path="res://Scripts/turret_manager.gd" id="5_oor6l"]
 [ext_resource type="PackedScene" uid="uid://dlp4ipixrwmfi" path="res://Scenes/Towers/turret.tscn" id="6_1hb7a"]
 [ext_resource type="Script" uid="uid://sn7qt236emwb" path="res://Scripts/bank.gd" id="8_0ohif"]
+[ext_resource type="FontFile" uid="uid://xjj0w717pm8f" path="res://Assets/Asap/static/Asap-Bold.ttf" id="8_ng2bb"]
 [ext_resource type="PackedScene" uid="uid://cm4l4saf1g71w" path="res://Scenes/difficulty_manager.tscn" id="9_08eeq"]
 [ext_resource type="PackedScene" uid="uid://dsach4m32rwu2" path="res://Scenes/victory_layer.tscn" id="10_o8m62"]
+[ext_resource type="Script" uid="uid://ccq11rdigw2q6" path="res://Scripts/debug_manager.gd" id="11_g8yfn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_2p1g8"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -37,6 +39,9 @@ point_count = 7
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o8m62"]
 albedo_color = Color(0.219501, 0.219501, 0.219501, 1)
 
+[sub_resource type="Theme" id="Theme_ehaau"]
+default_font = ExtResource("8_ng2bb")
+
 [sub_resource type="LabelSettings" id="LabelSettings_yqp1w"]
 font_size = 48
 outline_size = 8
@@ -57,7 +62,7 @@ size = Vector3(100, 2, 100)
 material = SubResource("StandardMaterial3D_uiqps")
 
 [node name="RayPickerCamera" parent="." node_paths=PackedStringArray("gridmap", "turrent_manager") instance=ExtResource("1_1i3bd")]
-transform = Transform3D(1, 0, 0, 0, 0.469472, 0.882948, 0, -0.882948, 0.469472, 0, 16, 11)
+transform = Transform3D(1, 0, 0, 0, 0.469472, 0.882948, 0, -0.882948, 0.469472, -3, 16, 11)
 gridmap = NodePath("../GridMap")
 turrent_manager = NodePath("../TurretManager")
 
@@ -126,7 +131,6 @@ autostart = true
 
 [node name="Base" parent="." instance=ExtResource("3_bq707")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -6.5)
-max_health = 50
 
 [node name="TurretManager" type="Node3D" parent="." node_paths=PackedStringArray("enemy_path")]
 script = ExtResource("5_oor6l")
@@ -140,12 +144,13 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = SubResource("Theme_ehaau")
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 script = ExtResource("8_0ohif")
-starting_gold = 250
+starting_gold = 120
 
 [node name="GoldText" type="Label" parent="Bank"]
 layout_mode = 2
@@ -153,11 +158,15 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 text = "Placerholder"
 label_settings = SubResource("LabelSettings_yqp1w")
+uppercase = true
 
 [node name="DifficultyManager" parent="." instance=ExtResource("9_08eeq")]
 
 [node name="VictoryLayer" parent="." instance=ExtResource("10_o8m62")]
 visible = false
+
+[node name="DebugManager" type="Node" parent="."]
+script = ExtResource("11_g8yfn")
 
 [connection signal="timeout" from="EnemyPath/Timer" to="EnemyPath" method="spawn_enemy"]
 [connection signal="stop_spawning_enemies" from="DifficultyManager" to="EnemyPath" method="_on_difficulty_manager_stop_spawning_enemies"]
