@@ -1,16 +1,30 @@
 extends CharacterBody3D
 
-@export var speed: float = 5.0
+@export var speed: float = 4.0
+@export var walk_speed: float = 4.0
+@export var sprint_speed: float = 7.0
 @export var jump_height: float = 1.0
 @export var fall_multiplier: float = 2.0
+@export var max_hitpoints: int = 100
 
 @onready var camera_pivot: Node3D = $CameraPivot
+@onready var damage_animation_player: AnimationPlayer = $DamageTexture/DamageAnimationPlayer
+@onready var game_over_menu: Control = $GameOverMenu
 
 var mouse_motion: Vector2 = Vector2.ZERO
+var hitpoints: int = max_hitpoints:
+	set(value):
+		if value < hitpoints:
+			damage_animation_player.stop(false)
+			damage_animation_player.play("TakeDamage")
+		hitpoints = value
+		print("Ouch: ", hitpoints)
+		if hitpoints <= 0:
+			game_over_menu.game_over()
 
 func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
+	
 func _physics_process(delta: float) -> void:
 	handle_camera_rotation()
 	
@@ -25,6 +39,11 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = sqrt(jump_height * 2.0 * (-1 * get_gravity().y))
 
+	# Handle Sprint
+	if Input.is_action_pressed("sprint"): 
+		speed = sprint_speed
+	else:
+		speed = walk_speed
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
