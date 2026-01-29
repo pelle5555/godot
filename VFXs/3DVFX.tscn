@@ -1,0 +1,89 @@
+[gd_scene load_steps=16 format=3 uid="uid://8mrs2xriqn5s"]
+
+[ext_resource type="Texture2D" uid="uid://7j0j6w23isy6" path="res://Assets/prototype-texture-with-size.png" id="1_ofpx6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_nimnw"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_tcay5"]
+sky_material = SubResource("ProceduralSkyMaterial_nimnw")
+
+[sub_resource type="Environment" id="Environment_e4eyd"]
+background_mode = 1
+background_color = Color(0.11267877, 0.112678744, 0.11267876, 1)
+sky = SubResource("Sky_tcay5")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chiyg"]
+albedo_color = Color(0.54656905, 0.54656905, 0.54656905, 1)
+albedo_texture = ExtResource("1_ofpx6")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_qu0ho"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="Gradient" id="Gradient_ofpx6"]
+colors = PackedColorArray(0.5467191, 0.18120754, 0, 1, 0.99999994, 0.5825695, 0.26615983, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nimnw"]
+gradient = SubResource("Gradient_ofpx6")
+
+[sub_resource type="Curve" id="Curve_tcay5"]
+_limits = [0.0, 4.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_e4eyd"]
+curve = SubResource("Curve_tcay5")
+
+[sub_resource type="Curve" id="Curve_chiyg"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_qu0ho"]
+curve = SubResource("Curve_chiyg")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xa6af"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+spread = 180.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0.3, 0)
+scale_min = 0.19999999
+scale_max = 0.39999998
+scale_curve = SubResource("CurveTexture_qu0ho")
+color = Color(1, 0.57254905, 0.33333334, 1)
+color_initial_ramp = SubResource("GradientTexture1D_nimnw")
+emission_curve = SubResource("CurveTexture_e4eyd")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpe7d"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_w1omx"]
+material = SubResource("StandardMaterial3D_tpe7d")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_e4eyd")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+material_override = SubResource("StandardMaterial3D_chiyg")
+mesh = SubResource("BoxMesh_qu0ho")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7875147, 0)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.9
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_xa6af")
+draw_pass_1 = SubResource("SphereMesh_w1omx")

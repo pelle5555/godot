@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://it8lvug3i6pt"]
+
+[ext_resource type="Texture2D" uid="uid://cmphw03onj3yt" path="res://Assets/particles/alpha/spotlight_08_a.png" id="1_37kl0"]
+
+[sub_resource type="Gradient" id="Gradient_8uh7m"]
+colors = PackedColorArray(0.82056785, 0.31153688, 0.74796134, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6uqi0"]
+gradient = SubResource("Gradient_8uh7m")
+
+[sub_resource type="Curve" id="Curve_ppyta"]
+_data = [Vector2(0, 0.5973155), 0.0, 0.0, 0, 0, Vector2(0.25757575, 0.5794184), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ykrsh"]
+curve = SubResource("Curve_ppyta")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mf4mk"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_min = 62.03
+initial_velocity_max = 137.98
+gravity = Vector3(0, 98, 0)
+scale_min = 0.19999999
+scale_max = 0.5
+scale_curve = SubResource("CurveTexture_ykrsh")
+color_ramp = SubResource("GradientTexture1D_6uqi0")
+
+[node name="Node2D" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 60
+texture = ExtResource("1_37kl0")
+lifetime = 2.0
+explosiveness = 0.55
+fixed_fps = 0
+process_material = SubResource("ParticleProcessMaterial_mf4mk")
