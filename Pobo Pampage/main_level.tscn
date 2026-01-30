@@ -30,189 +30,221 @@ environment = SubResource("Environment_bhu08")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
 
-[node name="Room" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 1.5, 12.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(6, 3, 6)
-
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Room"]
-
-[node name="Room2" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -11.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(11, 3, 7)
-
-[node name="Courtyard" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5, 1.5, -12.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(19, 6, 13)
-
-[node name="Room4" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2, 0, -18.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(5, 3, 5)
-
-[node name="Room5" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2, 0, -7.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(5, 3, 5)
-
-[node name="Room6" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 3, -1.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(9, 3, 9)
-
-[node name="Lava3" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 1, -5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(9, 3, 2)
-
-[node name="Room7" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.1, 3, -25)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(9, 3, 9)
-
-[node name="Room8" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 3, -22.9)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(9, 3, 13)
-
-[node name="Room9" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -22.4)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(9, 3, 4)
-
-[node name="Lava" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 1, -21.9)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 3, 11)
-
-[node name="Lava2" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2, 1, -23.9)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 3, 11)
-
-[node name="Corridor" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.25, -5.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 2.5, 6)
-
-[node name="Corridor2" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.5, -0.25, -12.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 2.5, 9)
-
-[node name="Corridor3" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.5, -0.25, -12.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 2.5, 7)
-
-[node name="Corridor4" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42.5, -0.25, -12.5)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 2.5, 7)
-
-[node name="Corridor5" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 52.3, 2.75, -13.2)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 2.5, 15)
-
-[node name="Corridor6" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 36.7, 2.75, -1)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 2.5, 23)
-
-[node name="Corridor7" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.2, 2.75, -27.6)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 2.5, 18)
-
-[node name="Corridor8" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 20.7, 2.75, -23.6)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 2.5, 13)
-
-[node name="Corridor10" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 26.2, 2.75, -26.1)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 2.5, 4)
-
-[node name="Corridor9" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 26.2, 1.5, -21.6)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 6, 6)
-
-[node name="Corridor12" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 42.2, 1.5, -23.6)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 6, 6)
-
-[node name="Corridor11" type="CSGBox3D" parent="Room/CSGCombiner3D"]
-transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 26.2, 1.5, -3.6)
-material_override = ExtResource("1_bw3m6")
-flip_faces = true
-size = Vector3(2, 6, 6)
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(3.52, 0, -1.42109e-14, 0, 3.52, 0, 1.42109e-14, 0, 3.52, 0, 0.1, 0)
 visible = false
 axis = 1
 texture = ExtResource("2_6614m")
 
-[node name="Pillar" type="CSGCylinder3D" parent="."]
+[node name="LevelContents" type="Node3D" parent="."]
+
+[node name="Room" type="CSGBox3D" parent="LevelContents"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5, 1.5, 12.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(6, 3, 6)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="LevelContents/Room"]
+
+[node name="Room2" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, 0, -11.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(11, 3, 7)
+
+[node name="Courtyard" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5, 1.5, -12.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(19, 6, 13)
+
+[node name="Room4" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2, 0, -18.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="Room5" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.2, 0, -7.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(5, 3, 5)
+
+[node name="Room6" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 3, 1.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(9, 3, 15)
+
+[node name="Lava3" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4, 1, -5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(9, 3, 2)
+
+[node name="Room7" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.1, 3, -25)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(9, 3, 9)
+
+[node name="Room8" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 3, -22.9)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(9, 3, 13)
+
+[node name="Room9" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 3, -22.4)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(9, 3, 4)
+
+[node name="Lava" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.2, 1, -21.9)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 3, 11)
+
+[node name="Lava2" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.2, 1, -23.9)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 3, 11)
+
+[node name="Corridor" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -0.25, -5.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 6)
+
+[node name="Corridor2" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 12.5, -0.25, -12.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 9)
+
+[node name="Corridor3" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.5, -0.25, -12.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 7)
+
+[node name="Corridor4" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 42.5, -0.25, -12.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 7)
+
+[node name="Corridor5" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 52.3, 2.75, -13.2)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 15)
+
+[node name="Corridor6" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 36.7, 2.75, 6)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 23)
+
+[node name="Corridor7" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 34.2, 2.75, -30.5)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 18)
+
+[node name="Corridor8" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 20.7, 2.75, -26.4)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 13)
+
+[node name="Corridor10" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 26.2, 2.75, -27)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 5.8)
+
+[node name="Corridor14" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 26.2, 2.75, 4.65)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 4.5)
+
+[node name="Corridor13" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 42.2, 2.75, -28.25)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 2.5, 3.3)
+
+[node name="Corridor9" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 26.2, 1.5, -21.8)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 6, 6.4)
+
+[node name="Corridor12" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 42.2, 1.5, -24)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 6, 6)
+
+[node name="Corridor11" type="CSGBox3D" parent="LevelContents/Room/CSGCombiner3D"]
+transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 26.2, 1.5, -2.1)
+material_override = ExtResource("1_bw3m6")
+flip_faces = true
+size = Vector3(2, 6, 9)
+
+[node name="Pillar" type="CSGCylinder3D" parent="LevelContents"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, -3)
 radius = 0.75
 height = 6.0
 sides = 32
 material = ExtResource("1_bw3m6")
 
-[node name="Pillar2" type="CSGCylinder3D" parent="."]
+[node name="Pillar2" type="CSGCylinder3D" parent="LevelContents"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, -3)
 radius = 0.75
 height = 6.0
 sides = 32
 material = ExtResource("1_bw3m6")
 
-[node name="Pillar3" type="CSGCylinder3D" parent="."]
+[node name="Pillar3" type="CSGCylinder3D" parent="LevelContents"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 3, 3)
 radius = 0.75
 height = 6.0
 sides = 32
 material = ExtResource("1_bw3m6")
 
-[node name="Pillar4" type="CSGCylinder3D" parent="."]
+[node name="Pillar4" type="CSGCylinder3D" parent="LevelContents"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 3, 3)
 radius = 0.75
 height = 6.0
 sides = 32
 material = ExtResource("1_bw3m6")
 
-[node name="Key" type="CSGSphere3D" parent="."]
+[node name="Key" type="CSGSphere3D" parent="LevelContents"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 3.4, -10)
 radius = 0.25
 radial_segments = 32
 rings = 12
 material = SubResource("StandardMaterial3D_6614m")
+
+[node name="Stairs" type="CSGPolygon3D" parent="LevelContents"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.7, 0, -6.5)
+polygon = PackedVector2Array(0, 0, 6, 3, 1, 0)
+depth = 2.0
+material = ExtResource("1_bw3m6")
+
+[node name="Stairs2" type="CSGPolygon3D" parent="LevelContents"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 16.7, 0, -8.5)
+polygon = PackedVector2Array(0, 0, 6, 3, 1, 0)
+depth = 2.0
+material = ExtResource("1_bw3m6")
+
+[node name="Stairs3" type="CSGPolygon3D" parent="LevelContents"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1.3, 0, 8.9)
+polygon = PackedVector2Array(0, 0, 6, 3, 1, 0)
+depth = 2.0
+material = ExtResource("1_bw3m6")
