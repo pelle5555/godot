@@ -2,7 +2,8 @@ extends CharacterBody3D
 class_name Enemy
 
 @onready var navigation_agent_3d: NavigationAgent3D = $NavigationAgent3D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree["parameters/playback"]
 
 @export var enemy_speed: float = 5.0
 @export var aggro_range: float = 12.0
@@ -42,7 +43,7 @@ func _physics_process(delta: float) -> void:
 		#provoked = false
 	
 	if provoked && distance <= attack_range:
-		animation_player.play("Attack")
+		playback.travel("Attack")
 		
 	if direction:
 		look_at_target(direction)
