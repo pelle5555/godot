@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://byf7ds5j1el2n"]
+[gd_scene load_steps=27 format=3 uid="uid://byf7ds5j1el2n"]
 
 [ext_resource type="Material" uid="uid://5hdv5aewwpo1" path="res://Levels/Materials/DarkGreyMat.tres" id="1_bw3m6"]
 [ext_resource type="Texture2D" uid="uid://bf4ymo6halbh6" path="res://Levels/Frame 1.png" id="2_6614m"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b8lb6n7ttrpnd" path="res://Assets/36_RR_G3D - Props/Floor.glb" id="8_eqmdw"]
 [ext_resource type="PackedScene" uid="uid://de1ep5j2wnddu" path="res://Assets/36_RR_G3D - Props/FloorTile.glb" id="9_uhmka"]
 [ext_resource type="PackedScene" uid="uid://cxp381ku62mpd" path="res://Assets/36_RR_G3D - Props/Cap.glb" id="10_5fjre"]
+[ext_resource type="PackedScene" uid="uid://bvcukimb4mumy" path="res://Assets/36_RR_G3D - Props/Light.glb" id="12_xqiim"]
 [ext_resource type="PackedScene" uid="uid://coqhh4uv8oisf" path="res://Assets/36_RR_G3D - Props/Vent.glb" id="13_do8ha"]
 [ext_resource type="PackedScene" uid="uid://diknh4p5nsja" path="res://Assets/36_RR_G3D - Props/Pipes.glb" id="14_htena"]
 
@@ -25,7 +26,7 @@ sky_material = SubResource("ProceduralSkyMaterial_bw3m6")
 [sub_resource type="Environment" id="Environment_bhu08"]
 background_mode = 2
 sky = SubResource("Sky_6614m")
-tonemap_mode = 2
+tonemap_mode = 3
 glow_enabled = true
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_4mnpp"]
@@ -68,6 +69,8 @@ environment = SubResource("Environment_bhu08")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.666667, 0.866667, 1, 1)
+light_energy = 0.5
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(3.52, 0, -1.42109e-14, 0, 3.52, 0, 1.42109e-14, 0, 3.52, 0, 0.1, 0)
@@ -525,6 +528,150 @@ transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 15.7, 
 
 [node name="Cap5" parent="Decor/Ceiling" instance=ExtResource("10_5fjre")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 15.8, 3, 5)
+
+[node name="Light" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, -26.6, 3, 12.5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light8" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 13.7, 3, -6)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light8"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light9" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 17.8, 3, -6)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light9"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light10" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 13.7, 3, 4.7)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light10"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light11" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(-8.74228e-08, 0, 2, 0, 2, 0, -2, 0, -8.74228e-08, 17.8, 3, 4.7)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light11"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light2" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.2, 6, -0.9)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light2"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light3" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.2, 6, 3.1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light3"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light4" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 25.5, 6, -12.9)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light4"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light5" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -25.5, 6, -9.9)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light5"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light6" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.4, 6, -9.9)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light6"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light7" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, -0.4, 6, 10.8)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light7"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
+
+[node name="Light12" parent="Decor/Ceiling" instance=ExtResource("12_xqiim")]
+transform = Transform3D(2.62268e-07, 0, 2, 0, 2, 0, -2, 0, 2.62268e-07, 26.1, 6, 17.3)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Decor/Ceiling/Light12"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.15, 0)
+light_color = Color(0.568627, 0.909804, 0.956863, 1)
+light_energy = 2.0
+light_specular = 0.75
+shadow_enabled = true
+omni_range = 10.0
+omni_attenuation = 0.25
 
 [node name="Wall" type="Node3D" parent="Decor"]
 
