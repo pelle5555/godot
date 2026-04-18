@@ -1,4 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://8nacwisr3x2y"]
+[gd_scene load_steps=8 format=3 uid="uid://8nacwisr3x2y"]
+
+[ext_resource type="PackedScene" uid="uid://qpp4lkynjuc3" path="res://Assets/tree.glb" id="1_bo1nx"]
+[ext_resource type="PackedScene" uid="uid://drcc1n1e887wb" path="res://Assets/sheep.glb" id="2_8gbba"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7u77a"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -22,18 +25,20 @@ roughness = 0.1
 
 [node name="Main" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_bo1nx")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.964966, 0.262374, 0, -0.262374, 0.964966, 0, 6.42878, 0)
-visible = false
-
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31462, 5.69683, 1.08988)
-shadow_enabled = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.64302, 4.32273, 0.00584078)
 material_override = SubResource("StandardMaterial3D_7u77a")
 mesh = SubResource("SphereMesh_jjgbg")
+
+[node name="tree" parent="." instance=ExtResource("1_bo1nx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.91954, 0, 0)
+
+[node name="sheep" parent="." instance=ExtResource("2_8gbba")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.267874)
